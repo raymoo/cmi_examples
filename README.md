@@ -1,1 +1,3 @@
-This is a collection of CMI examples
+Examples
+========
+ - implementation.lua: Integrating CMI into a mob

@@ -8,7 +8,7 @@
 --  cmi_components: component data serialized
 
 local function on_activate(self, staticdata, dtime)
-	local tab = minetest.parse_json(staticdata)
+	local tab = staticdata ~= "" and minetest.parse_json(staticdata)
 	local obj = self.object
 	if tab then
 		obj:set_hp(tab.hp)

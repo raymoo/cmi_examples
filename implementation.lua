@@ -13,10 +13,10 @@ local function on_activate(self, staticdata, dtime)
 	if tab then
 		obj:set_hp(tab.hp)
 		-- (CMI) Deserialize component data
-		self.cmi_components = cmi.activate_components(tab.cmi_components)
+		self._cmi_components = cmi.activate_components(tab.cmi_components)
 	else
 		-- (CMI) Deserialize component data
-		self.cmi_components = cmi.activate_components()
+		self._cmi_components = cmi.activate_components()
 	end
 	-- (CMI) Notify CMI of finished activation
 	cmi.notify_activate(obj)
@@ -26,7 +26,7 @@ local function get_staticdata(self)
 	local tab = {
 		hp = self.object:get_hp(),
 		-- (CMI) Serialize component data
-		cmi_components = cmi.serialize_components(self.cmi_components),
+		cmi_components = cmi.serialize_components(self._cmi_components),
 	}
 	return minetest.write_json(tab)
 end
@@ -91,9 +91,9 @@ minetest.register_entity("cmi_examples:mob", {
 	on_punch = on_punch,
 	get_staticdata = get_staticdata,
 	-- (CMI) Required field
-	cmi_is_mob = true,
+	_cmi_is_mob = true,
 	-- (CMI) Optional field
 	description = "Example Mob",
 	-- (CMI) Optional field
-	cmi_attack = attack,
+	_cmi_attack = attack,
 })

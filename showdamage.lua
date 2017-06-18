@@ -2,7 +2,7 @@ cmi.register_on_punchmob(function(mob, hitter, tflp, toolcaps, dir, damage)
 	if hitter and hitter:is_player() then
 		local pname = hitter:get_player_name()
 		local id = cmi.get_uid(mob)
-		minetest.chat_send_all(id .. " got hit by " .. pname .. "!")
+		minetest.chat_send_all(id .. " got hit by " .. pname .. " for " .. tostring(damage) .. " damage!")
 	end
 end)
 
